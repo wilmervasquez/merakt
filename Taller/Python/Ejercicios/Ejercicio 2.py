@@ -1,9 +1,10 @@
-yearOfBirth = int(input("Ingrese su año de Nacimiento: "))
-yearCurrent = int(input("Ingrese el año actual: "))
+añoDeNacimiento = int(input("Ingrese su año de Nacimiento: "))
+añoActual = int(input("Ingrese el año actual: "))
 
-age = yearCurrent - yearOfBirth
-print(f"- Tu edad es {age}")
-if age >= 65:
+edad = añoActual - añoDeNacimiento
+print(f"- Tu edad es {edad}")
+
+if edad >= 65:
   print("¡Felicitacines! puedes jubilarte este año.")
 else:
-  print("Aun no cumles con la edad para jubilarte")
+  print("Aun no cumles con la edad para jubilarte") 
