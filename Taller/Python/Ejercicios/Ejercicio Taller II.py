@@ -12,20 +12,18 @@ ventas = [
 
 # 📌 Tareas
 # ✅ 1. Ordena los libros por cantidad de ventas de mayor a menor.
-libros = []
-vistos = set()
-
-# Iterar sobre cada diccionario en la lista original
-for libro in ventas:
-    tupla_items = tuple(libro.items())
-    if tupla_items not in vistos:
-        libros.append(libro)
-        vistos.add(tupla_items)
+libros = {}
 
 for libro in ventas:
-  
+  titulo = libro['titulo']
+  if titulo in libros:
+    libros[titulo] += 1
+  else:
+    libros[titulo] = 1
 
-   
+libros = map(lambda lib: {'libro':lib[0], 'ventas': lib[1]}, list(libros.items()))
+libros = sorted(libros, key = lambda lib: lib['ventas'], reverse=True)
+print(libros)
 
 # ✅ 2. Calcula el total de ventas de la semana.
 precio_total_de_ventas = 0.00
@@ -35,6 +33,8 @@ for libro in ventas:
 print(f'💲 Total de ventas de la semana: S/ {precio_total_de_ventas:.2f}')
 
 # ✅ 3. Encuentra el libro más vendido.
+libro_mas_vendido = max(libros, key = lambda lib: lib['ventas'] )
+print(libro_mas_vendido)
 
 # ✅ 4. Calcula el promedio de precio de los libros vendidos.
 promedio = precio_total_de_ventas / len(ventas)
